@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "costumes#index"
 
   resources :costumes, except: [:new] do
+    collection do
+      get "mycostumes"
+    end
     resources :bookings, only: [:create]
   end
 end
