@@ -42,4 +42,17 @@ User.destroy_all
   end
 end
 
+bruna = User.create(
+  email: "bru@gmail.com",
+  password: "Brun@123"
+)
+
+3.times do
+    bruna.costumes.create(
+    title: Faker::Fantasy::Tolkien.character,
+    description: Faker::Fantasy::Tolkien.poem,
+    price_per_day: Faker::Commerce.price(range: 10.0..100.0)
+  )
+end
+
 puts "Done :)"
