@@ -7,3 +7,34 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts 'starting to generate'
+
+Booking.destroy_all
+Costume.destroy_all
+User.destroy_all
+
+5.times do
+  user = User.create(
+  email: Faker::Internet.email,
+  password: Faker::Internet.password
+  )
+
+  3.times do (
+    costume = user.costumes.create(
+      title: Faker::Fantasy::Tolkien.character,
+      description: Faker::Fantasy::Tolkien.poem,
+      price_per_day: Faker::Commerce.price(range: 10.0..100.0)
+    )
+  )
+
+  Booking.create!(
+    start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    end_date: Faker::Date.between(from: Date.today, to: 2.days.from_now),
+    user: user,
+    costume: costume
+  )
+  end
+end
+
+puts "Done :)"
