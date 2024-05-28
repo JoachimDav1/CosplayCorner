@@ -1,6 +1,7 @@
 class CostumesController < ApplicationController
   before_action :find_user, only: %i[show edit]
   before_action :find_costume, only: %i[update destroy show edit]
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @costumes = Costume.all
