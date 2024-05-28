@@ -1,5 +1,5 @@
 class CostumesController < ApplicationController
-  before_action :find_user, only: %i[show edit]
+  before_action :find_user, only: %i[show edit mycostumes]
   before_action :find_costume, only: %i[update destroy show edit]
   skip_before_action :authenticate_user!, only: :index
 
@@ -36,6 +36,11 @@ class CostumesController < ApplicationController
   def destroy
     @costume.destroy
     redirect_to costume_path(@costume), status: :see_other
+  end
+
+  def mycostumes
+    @costumes = @user.costumes
+    @costume = Costume.new
   end
 
   private
