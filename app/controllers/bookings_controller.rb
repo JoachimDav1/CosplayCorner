@@ -1,16 +1,20 @@
 require 'date'
 
 class BookingsController < ApplicationController
+
   def create
     @costume = Costume.find(params[:costume_id])
     @user = current_user
+
     @booking = Booking.new(booking_params)
+    @booking.costume = @costume
+    @booking.user = @user
     @booking.total_price = @booking.costume.price_per_day * amount_of_days
-    @booking.costume = @booking
+
     if @booking.save!
       redirect_to booking_path(@booking), notice: 'Booking was successfully registered. Have fun!'
     else
-      render :new, status: :unprocessable_entity
+      render 'costumes/show', status: :unprocessable_entity
     end
   end
 
@@ -23,8 +27,9 @@ class BookingsController < ApplicationController
   end
 
   def amount_of_days
-    start_date = Date.parse(booking_params[:start_date])
-    end_date = Date.parse(booking_params[:end_date])
-    (end_date - start_date).to_i
+    start_date = @booking[:start_date].to_date
+    end_date = @booking[:end_date].to_date
+    diff_date = (end_date - start_date).to_i
+    diff_date.zero? ? 1 : diff_date
   end
 end
