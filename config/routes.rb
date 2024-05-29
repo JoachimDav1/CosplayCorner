@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :costumes, except: [:new] do
+    collection do
+      get "mycostumes"
+    end
     resources :bookings, only: [:create]
   end
 end
