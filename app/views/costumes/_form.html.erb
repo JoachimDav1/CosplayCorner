@@ -1,7 +1,7 @@
 <% if costume.valid? %>
- <h2>Upload your costume</h2>
- <% else  %>
  <h2>Update your costume</h2>
+ <% else  %>
+ <h2>Upload your costume</h2>
  <% end %>
 <%= simple_form_for(costume) do |f| %>
   <%= f.input :title %>
