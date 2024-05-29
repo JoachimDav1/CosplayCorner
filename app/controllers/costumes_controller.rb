@@ -26,7 +26,7 @@ class CostumesController < ApplicationController
 
   def update
     if @costume.update(costume_params)
-      redirect_to to costume_path(@costume), notice: 'Costume was successfully updated.'
+      redirect_to costume_path(@costume), notice: 'Costume was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
