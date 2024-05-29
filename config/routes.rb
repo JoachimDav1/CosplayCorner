@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "costumes#index"
+  #root to: "costumes#index"
+  root to: "pages#home"
 
   resources :costumes, except: [:new] do
     collection do

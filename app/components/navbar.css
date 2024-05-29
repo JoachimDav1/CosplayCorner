@@ -1,0 +1,14 @@
+.container {
+  background-color: antiquewhite;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navlink_holder {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(186, 186, 186);
+  width: 350px;
+}

@@ -10,3 +10,27 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+ // font
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: Plus Jakarta sans-serif;
+  align-items: center;
+}
+
+
+.grid-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 25px 12px;
+  grid-template-areas:
+  ". . . ."
+  ". . . ."
+  ". . . .";
+}
