@@ -5,7 +5,6 @@ class CostumesController < ApplicationController
 
   def index
     @costumes = Costume.all
-    @costume = Costume.new
   end
 
   def show
@@ -54,6 +53,6 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:title, :description, :price_per_day)
+    params.require(:costume).permit(:title, :description, :price_per_day, photos: [])
   end
 end
