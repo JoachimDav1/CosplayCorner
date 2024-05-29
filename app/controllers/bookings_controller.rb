@@ -12,14 +12,14 @@ class BookingsController < ApplicationController
     @booking.total_price = @booking.costume.price_per_day * amount_of_days
 
     if @booking.save!
-      redirect_to booking_path(@booking), notice: 'Booking was successfully registered. Have fun!'
+      redirect_to bookings_path(current_user.bookings), notice: 'Booking was successfully registered. Have fun!'
     else
       render 'costumes/show', status: :unprocessable_entity
     end
   end
 
-  def show
-    @booking = Booking.find(params[:id])
+  def index
+    @bookings = current_user.bookings
   end
 
   # how to update the availability?

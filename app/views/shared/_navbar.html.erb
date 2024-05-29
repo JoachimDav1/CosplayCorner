@@ -1,10 +1,12 @@
 <div class="navbar">
   <div class="navbar-container">
-    <%= image_tag "CosplayCorner.svg", alt: "CosplayCorner", width: 200, class: "logo" %>
+    <%= link_to costumes_path, class: "navbar-brand" do %>
+      <%= image_tag "CosplayCorner.svg",alt: "CosplayCorner", width: 200, class: "logo" %>
+    <% end %>
     <div class="navlink-holder">
-      <%= link_to "Home", costumes_path, class: "nav-link" %>
+      <%= link_to "Add a costume", costumes_path, class: "nav-link" %>
       <%= link_to "My Costumes", mycostumes_costumes_path, class: "nav-link" %>
-      <%= link_to "My Bookings", "", class: "nav-link" %>
+      <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
     </div>
   </div>
 </div>
