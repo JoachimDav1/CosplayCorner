@@ -15,7 +15,7 @@ Costume.destroy_all
 User.destroy_all
 
 5.times do
-  user = User.create(
+  user = User.new(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     first_name: Faker::FunnyName.name,
@@ -23,6 +23,12 @@ User.destroy_all
     phone_number: Faker::PhoneNumber.phone_number,
     address: Faker::Address.full_address
   )
+  avatar_url = "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"
+  file_avatar = URI.open(avatar_url)
+  user.photo.attach(io: file_avatar, filename: "css/ss",content_type: "image/jpeg")
+  user.save
+
+  puts 'one created'
 
   3.times do
     costume = user.costumes.new(
@@ -72,7 +78,7 @@ User.destroy_all
   end
 end
 
-bruna = User.create(
+bruna = User.new(
   email: "bru@gmail.com",
   password: "Brun@123",
   first_name: Faker::FunnyName.name,
@@ -80,6 +86,10 @@ bruna = User.create(
   phone_number: Faker::PhoneNumber.phone_number,
   address: Faker::Address.full_address
 )
+avatar_bruna = "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"
+file_avatar = URI.open(avatar_bruna)
+bruna.photo.attach(io: file_avatar, filename: "css/ss",content_type: "image/jpeg")
+bruna.save
 
 3.times do
     bruna.costumes.create(
