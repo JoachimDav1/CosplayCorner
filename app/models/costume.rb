@@ -5,5 +5,5 @@ class Costume < ApplicationRecord
   validates :title, :description, :price_per_day, presence: true
   validates :description, length: { minimum: 6 }
 
-  has_one_attached :photo
+  has_many_attached :photos
 end
