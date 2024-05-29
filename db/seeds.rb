@@ -17,7 +17,11 @@ User.destroy_all
 5.times do
   user = User.create(
     email: Faker::Internet.email,
-    password: Faker::Internet.password
+    password: Faker::Internet.password,
+    first_name: Faker::FunnyName.name,
+    last_name: Faker::Name.last_name,
+    phone_number: Faker::PhoneNumber.phone_number,
+    address: Faker::Address.full_address
   )
 
   3.times do
@@ -70,7 +74,11 @@ end
 
 bruna = User.create(
   email: "bru@gmail.com",
-  password: "Brun@123"
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
 )
 
 3.times do

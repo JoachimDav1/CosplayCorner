@@ -13,6 +13,6 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :email, format: { with: Devise.email_regexp }, presence: true
   validates :password, presence: true, length: { minimum: 6 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/ }
-
   has_one_attached :photo
+
 end
