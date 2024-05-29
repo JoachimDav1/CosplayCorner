@@ -5,7 +5,6 @@ class CostumesController < ApplicationController
 
   def index
     @costumes = Costume.all
-    @costume = Costume.new
   end
 
   def show
