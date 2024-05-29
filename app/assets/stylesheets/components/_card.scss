@@ -1,6 +1,18 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h5 {
+    text-align: left;
+  }
+}
+
+.card-info {
+    text-align: left;
 }
 
 .card:hover {
@@ -13,5 +25,5 @@
 
 .card-details {
   display: flex;
-  
+
 }
