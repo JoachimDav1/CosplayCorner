@@ -1,3 +1,6 @@
+<%= render "form", costume: @costume %>
+<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+
 <div class="d-flex flex-wrap">
   <% @costume.photos.each do |photo| %>
     <div class="p-2">
