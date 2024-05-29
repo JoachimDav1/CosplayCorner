@@ -1,2 +1,33 @@
-<%= render "form", costume: @costume %>
-<%= cl_image_tag @costume.photo.key, height: 300, width: 400, crop: :fill %>
+<div class="d-flex flex-wrap">
+  <% @costume.photos.each do |photo| %>
+    <div class="p-2">
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-around p-3">
+  <div class="container">
+    <h2><%= @costume.title %></h2>
+    <h4><%= @costume.description %></h4>
+    <h4>Costume Size</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum numquam adipisci modi blanditiis illo, magnam minima cumque earum explicabo, libero dolores ipsum? Exercitationem, dolore officia. Laborum, autem! Aperiam, ex alias?</p>
+    <h4>Costume Description</h4>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, mollitia quas velit magnam qui repellat beatae molestias quam blanditiis nam recusandae praesentium maxime, minima molestiae, nostrum iusto modi? Saepe, fuga?</p>
+    <p><%= @costume.user %></p>
+  </div>
+
+  <div>
+    <div id="booking-form" class="p-3">
+      <h1>Book your costume</h1>
+      <h3><%= @costume.title %></h3>
+      <%= simple_form_for [@costume, @booking] do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit "Confirm your Booking", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
