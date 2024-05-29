@@ -1,25 +1,26 @@
 <div class = "body">
-  <div class = "navbar">
-    <div class = "navbar-container">
-      <%= image_tag "CosplayCorner.svg", alt: "CosplayCorner", width: 200 %>
-      <div class = "navlink-holder">
-      <a href="" class ="navlink">Home</a>
-      <a href="" class = "navlink">My Costumes</a>
-      <a href=""class = "navlink">My Bookings</a>
-      </div>
-    </div>
-  </div>
   <div class ="banner">
       <H1>Turn heads, crack up crowds</H1>
   </div>
   <div class = "container">
     <div class="grid-container">
       <% @costumes.each do |costume| %>
+
           <div class= "card">
             <img src="https://www.miliashop.com/img/co/781.jpg" alt="background" style="widght:100">
-            <h4><%= costume.title %></h4>
+            <h5><%= costume.title %></h5>
             <p><%= costume.description %></p>
+            <div class="card-details">
+              <div>
+                <%=# cl_image_tag costume.user.photo.key, height: 300, width: 400, crop: :fill, class: "avatar" %>
+                <p><%= costume.user.first_name %></p>
+              </div>
+              <div>
+                <p><%= costume.price_per_day %></p>
+              </div>
+            </div>
           </div>
+
       <% end %>
     </div>
   </div>
