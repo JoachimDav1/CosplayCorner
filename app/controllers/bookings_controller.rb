@@ -18,6 +18,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   # how to update the availability?
 
   private
