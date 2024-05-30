@@ -13,6 +13,14 @@ class CostumesController < ApplicationController
 
   def new
     @costume = Costume.new
+    @costume_categories = [
+      "Animal", "Superhero", "Fantasy", "Horror", "Historical",
+      "Sci-Fi", "Pirate", "Disney", "Fairy Tale", "Zombie",
+      "Vampire", "Alien", "Steampunk", "Celebrity", "Cartoon",
+      "Clown", "Sports", "Medieval", "Victorian", "Greek Mythology",
+      "Roman Mythology", "Ninja", "Samurai", "Military", "Western",
+      "Space", "Sea Creature", "Robot", "Wizard", "Witch"
+    ]
   end
 
   def create
@@ -26,6 +34,14 @@ class CostumesController < ApplicationController
   end
 
   def edit
+    @costume_categories = [
+      "Animal", "Superhero", "Fantasy", "Horror", "Historical",
+      "Sci-Fi", "Pirate", "Disney", "Fairy Tale", "Zombie",
+      "Vampire", "Alien", "Steampunk", "Celebrity", "Cartoon",
+      "Clown", "Sports", "Medieval", "Victorian", "Greek Mythology",
+      "Roman Mythology", "Ninja", "Samurai", "Military", "Western",
+      "Space", "Sea Creature", "Robot", "Wizard", "Witch"
+    ]
   end
 
   def update
@@ -56,6 +72,6 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:title, :description, :price_per_day, photos: [])
+    params.require(:costume).permit(:title, :description, :price_per_day,:size, :category ,photos: [])
   end
 end

@@ -14,6 +14,17 @@ Booking.destroy_all
 Costume.destroy_all
 User.destroy_all
 
+sizes = ['Small', 'Medium', 'Large', 'Extra Large']
+categories = [
+  "Animal", "Superhero", "Fantasy", "Horror", "Historical",
+  "Sci-Fi", "Pirate", "Disney", "Fairy Tale", "Zombie",
+  "Vampire", "Alien", "Steampunk", "Celebrity", "Cartoon",
+  "Clown", "Sports", "Medieval", "Victorian", "Greek Mythology",
+  "Roman Mythology", "Ninja", "Samurai", "Military", "Western",
+  "Space", "Sea Creature", "Robot", "Wizard", "Witch"
+]
+
+
 3.times do
   user = User.new(
     email: Faker::Internet.email,
@@ -34,7 +45,9 @@ User.destroy_all
     costume = user.costumes.new(
       title: Faker::Fantasy::Tolkien.character,
       description: Faker::Fantasy::Tolkien.poem,
-      price_per_day: Faker::Commerce.price(range: 10.0..100.0)
+      price_per_day: Faker::Commerce.price(range: 10.0..100.0),
+      size: sizes.sample,
+      category: categories.sample
     )
     photo_urls = [
       "https://cdn.pixabay.com/photo/2023/03/10/08/08/swordsman-7841711_1280.jpg",
