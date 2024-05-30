@@ -8,26 +8,37 @@
       <% @costumes.each do |costume| %>
 
           <div class= "card">
-            <% if costume.photos.attached? %>
-              <% photo = costume.photos.sample %>
-              <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; height: 50%" %>
-            <% else %>
-              <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%; height: 50%" %>
-            <% end %>
+            <div class ="card-image">
+
+              <% if costume.photos.attached? %>
+                <% photo = costume.photos.sample %>
+                <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; object-fit:cover" %>
+              <% else %>
+                <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%" %>
+              <% end %>
+
+            </div>
+
             <div class="card-info">
+
               <h6 class="card-title"><%= link_to costume.title, costume_path(costume) %></h6>
               <p><%= costume.description %></p>
 
               <div class="card-details">
-                <div class="user-avatar">
+
+                <div class="card-user-avatar">
                   <%= cl_image_tag costume.user.photo.key, height: 25, width: 25, crop: :fill %>
-                  <p><%= costume.user.first_name %></p>
+                  <h6><%= costume.user.first_name %></h6>
                 </div>
-                <p><%= costume.price_per_day %></p>
+                <p><strong><%= costume.price_per_day %> €</strong></p>
+
               </div>
+
             </div>
+
           </div>
       <% end %>
+
     </div>
   </div>
 </div>
