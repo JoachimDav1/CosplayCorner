@@ -28,26 +28,9 @@
           <span class="visually-hidden">Next</span>
         </button>
 
-    </div>
+      </div>
 
-      
-
-
-<div class="booking-container">
-  <div>
-    <div id="booking-form" class="p-3" data-bookings-dates="<%= @bookings_dates.to_json %>">
-        <h1>Book your costume</h1>
-        <h3><%= @costume.title %></h3>
-      <%= simple_form_for [@costume, @booking] do |f| %>
-          <%= f.input :start_date, as: :string, input_html: { id: "start_date", data: { controller: "datepicker" } } %>
-          <%= f.input :end_date, as: :string, input_html: { id: "end_date", data: { controller: "datepicker" } } %>
-          <%= f.button :submit, "Book this costume !", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-
-
- <div class ="show-card-info">
+      <div class ="show-card-info">
 
         <h3><%= @costume.title %></h3>
         <h6><%= @costume.description %></h6>
@@ -60,8 +43,34 @@
               <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill %>
               <p><%= @costume.user.first_name %> <%= @costume.user.last_name %></p>
           </div>
-             <p><strong><%=@costume.price_per_day %> €</strong></p>
+
+          <p><strong><%=@costume.price_per_day %> €</strong></p>
+
         </div>
+
       </div>
+
     </div>
- </div>
+
+  <div>
+    <div id="booking-form" class="p-3">
+      <h1>Book your costume</h1>
+      <h3><%= @costume.title %></h3>
+      <%= simple_form_for [@costume, @booking] do |f| %>
+        <%= f.input :start_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } }  %>
+        <%= f.submit "Confirm your Booking", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
