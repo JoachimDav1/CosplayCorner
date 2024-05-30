@@ -1,10 +1,25 @@
+<div class ="banner"> <h1>Here are all of your costumes <%= current_user.first_name %></h1></div>
+
 <%= link_to 'add a costume', new_costume_path, class: "btn btn-secondary" %>
-<% @costumes.each do |costume| %>
-  <p><%= costume.title %></p>
-  <p> <%= costume.description %></p>
-  <p> <%= costume.size %></p>
-  <p> <%= costume.category %></p>
-  <p><%= costume.price_per_day %>€</p>
-  <%= link_to '🗑️', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "btn" %>
-  <%= link_to 'Edit this costume', edit_costume_path(costume), class: "btn btn-secondary" %>
-<% end %>
+ <div class = "container">
+    <div class="grid-container">
+
+      <% @costumes.each do |costume| %>
+          <div class= "card">
+            <% if costume.photos.attached? %>
+                        <% photo = costume.photos.sample %>
+                        <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; height: 50%" %>
+                      <% else %>
+                        <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%; height: 50%" %>
+                      <% end %>
+            <div class="card-info">
+              <h6 class="card-title"><%= link_to costume.title, costume_path(costume) %></h6>
+              <p> <%= costume.description %></p>
+              <p><%= costume.price_per_day %>€</p>
+            </div>
+             <%= link_to '🗑️', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "btn" %>
+            <%= link_to 'Edit this costume', edit_costume_path(costume), class: "btn btn-secondary" %>
+            </div>
+        <% end %>
+    </div>
+  </div>
