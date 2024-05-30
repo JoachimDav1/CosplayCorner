@@ -1,16 +1,16 @@
-<div>
+<div class="container">
   <% if @costume.valid? %>
     <h3>Update your costume</h3>
     <% else  %>
     <h3>Upload a new costume</h3>
   <% end %>
-  <div class="w-50">
-    <%= simple_form_for(@costume) do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :price_per_day %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit class: "btn btn-primary mt-2"%>
-    <% end %>
-  </div>
+  <%= simple_form_for(@costume) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price_per_day %>
+    <%= f.input :size, collection: ["Extra Small", "Small","Medium","Large", "Extra Large"] %>
+    <%= f.input :category, collection: @costume_categories, prompt: 'Select Category' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit class: "btn btn-primary mt-2"%> %>
+  <% end %>
 </div>
