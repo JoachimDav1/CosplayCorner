@@ -1,0 +1,55 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 180px;
+}
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  margin: 0;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navlink-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 350px;
+  padding-right: 20px;
+  margin: 0;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+.navbar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin: 0;
+}
+
+.logo {
+  padding-left: 20px;
+}

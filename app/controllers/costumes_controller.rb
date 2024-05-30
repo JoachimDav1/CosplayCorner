@@ -11,6 +11,10 @@ class CostumesController < ApplicationController
     @booking = Booking.new
   end
 
+  def new
+    @costume = Costume.new
+  end
+
   def create
     costume = Costume.new(costume_params)
     costume.user = current_user
@@ -39,7 +43,6 @@ class CostumesController < ApplicationController
 
   def mycostumes
     @costumes = @user.costumes
-    @costume = Costume.new
   end
 
   private
