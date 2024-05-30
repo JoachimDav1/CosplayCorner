@@ -1,9 +1,11 @@
+
 import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
 
 export default class extends Controller {
   connect() {
     const bookedDates = this.getBookedDates();
+
 
     flatpickr(this.element, {
       minDate: "today",
@@ -27,6 +29,7 @@ export default class extends Controller {
       }
     });
   }
+
 
   getBookedDates() {
     const bookingForm = this.element.closest("#booking-form");

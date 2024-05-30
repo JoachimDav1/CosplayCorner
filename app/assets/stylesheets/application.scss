@@ -34,3 +34,54 @@ body {
   ". . . ."
   ". . . .";
 }
+
+.show-container {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.show-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: start;
+  width: 800px;
+  height: 700px;
+  margin-right: 50px;
+  margin-left: 15px;
+  padding-top: 10px;
+}
+
+.show-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.show-card-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.show-card-user-avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.show-card-info {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
