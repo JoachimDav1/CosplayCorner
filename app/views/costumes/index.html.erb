@@ -1,6 +1,20 @@
 <div class = "body">
-  <div class ="banner">
+  <div class ="banner d-flex flex-column">
       <H1>Turn heads, crack up crowds</H1>
+      <div class="search container">
+        <div class="row justify-content-center">
+          <div class="col-sm-6 my-3">
+            <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+              <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "What do you want to turn into?"
+                %>
+              <%= button_tag "", name: "", class: "btn btn-light" do %><i class="fa-solid fa-magnifying-glass"></i><% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
   </div>
   <div class = "container">
     <div class="grid-container">
