@@ -9,6 +9,8 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :price_per_day %>
+    <%= f.input :size, collection: ["Extra Small", "Small","Medium","Large", "Extra Large"] %>
+    <%= f.input :category, collection: @costume_categories, prompt: 'Select Category' %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit %>
   <% end %>
