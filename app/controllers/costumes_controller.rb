@@ -52,11 +52,11 @@ class CostumesController < ApplicationController
   def edit
     @costume_categories = [
       "Animal", "Superhero", "Fantasy", "Horror", "Historical",
-      "Sci-Fi", "Pirate", "Disney", "Fairy Tale", "Zombie",
+      "Sci-Fi", "Fairy Tale", "Zombie",
       "Vampire", "Alien", "Steampunk", "Celebrity", "Cartoon",
-      "Clown", "Sports", "Medieval", "Victorian", "Greek Mythology",
+      "Clown", "Victorian", "Greek Mythology",
       "Roman Mythology", "Ninja", "Samurai", "Military", "Western",
-      "Space", "Sea Creature", "Robot", "Wizard", "Witch"
+      "Robot", "Wizard", "Witch"
     ]
   end
 
