@@ -1,9 +1,8 @@
-
-<div class="container mt-4">
+<div class="container">
   <% if @costume.valid? %>
-    <h2>Update your costume</h2>
+    <h3>Update your costume</h3>
     <% else  %>
-    <h2>Upload your costume</h2>
+    <h3>Upload a new costume</h3>
   <% end %>
   <%= simple_form_for(@costume) do |f| %>
     <%= f.input :title %>
@@ -12,6 +11,6 @@
     <%= f.input :size, collection: ["Extra Small", "Small","Medium","Large", "Extra Large"] %>
     <%= f.input :category, collection: @costume_categories, prompt: 'Select Category' %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary mt-2"%> %>
   <% end %>
 </div>
