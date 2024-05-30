@@ -3,8 +3,8 @@
 <h2> My Bookings</h2>
 <% @bookings.each do |booking| %>
   <div class="booking-card" style="m-3">
-    <p><%= booking.start_date %></p>
-    <p><%= booking.end_date %></p>
+    <p> From <%= booking.start_date.strftime("%B %d, %Y") %></p>
+    <p> Until <%= booking.end_date.strftime("%B %d, %Y") %></p>
     <p><%= booking.total_price %> €</p>
   </div>
 <% end %>
