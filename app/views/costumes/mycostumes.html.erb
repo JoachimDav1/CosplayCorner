@@ -1,0 +1,9 @@
+<%= render 'form', costume: @costume %>
+
+<% @costumes.each do |costume| %>
+  <p><%= costume.title %></p>
+  <p> <%= costume.description %></p></p>
+  <p><%= costume.price_per_day %>€</p>
+  <%= link_to '🗑️', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "btn" %>
+  <%= link_to 'Edit this costume', edit_costume_path(costume), class: "btn btn-secondary" %>
+<% end %>

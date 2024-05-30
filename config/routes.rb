@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     end
     resources :bookings, only: [:create]
   end
-  resources :bookings, only: [:show]
+  resources :bookings, only: [:index]
 end
