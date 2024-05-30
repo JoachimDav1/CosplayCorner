@@ -14,8 +14,8 @@
       <% end %>
       <h6 class="card-title"><%= booking.costume.title %></h6>
       <div class="card-info">
-        <p> From <%= booking.start_date.strftime("%B %d, %Y") %></p>
-        <p> Until <%= booking.end_date.strftime("%B %d, %Y") %></p>
+        <p> <b>From: </b> <%= booking.start_date.strftime("%B %d, %Y") %></p>
+        <p> <b>Until: </b> <%= booking.end_date.strftime("%B %d, %Y") %></p>
         <p><%= booking.total_price %> €</p>
       </div>
      </div>

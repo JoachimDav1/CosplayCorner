@@ -9,6 +9,12 @@ class CostumesController < ApplicationController
 
   def show
     @booking = Booking.new
+    @bookings_dates = @costume.bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def new

@@ -18,18 +18,15 @@
   </div>
 
   <div>
-    <div id="booking-form" class="p-3">
-      <h1>Book your costume</h1>
-      <h3><%= @costume.title %></h3>
-      <%= simple_form_for [@costume, @booking] do |f| %>
-        <%= f.input :start_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-        <%= f.input :end_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } }  %>
-        <%= f.submit "Confirm your Booking", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+      <div id="booking-form" class="p-3" data-bookings-dates="<%= @bookings_dates.to_json %>">
+        <h1>Book your costume</h1>
+        <h3><%= @costume.title %></h3>
+        <%= simple_form_for [@costume, @booking] do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.button :submit, "Book this costume !", class: "btn btn-primary" %>
+        <% end %>
+  </div>
+
   </div>
 </div>
