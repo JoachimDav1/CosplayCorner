@@ -5,6 +5,16 @@ class CostumesController < ApplicationController
 
   def index
     @costumes = Costume.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        costumes.title ILIKE :query
+        OR costumes.description ILIKE :query
+        OR costumes.category ILIKE :query
+        OR users.first_name ILIKE :query
+        OR users.last_name ILIKE :query
+      SQL
+      @costumes = @costumes.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show
