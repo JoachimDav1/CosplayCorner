@@ -5,7 +5,7 @@ export default class extends Controller {
   connect() {
     flatpickr(this.element, {
       enableTime: false,
-      dateFormat: "d-m-Y", // or any other format you prefer
+      dateFormat: "Y-m-d", // or any other format you prefer
     })
   }
 }
