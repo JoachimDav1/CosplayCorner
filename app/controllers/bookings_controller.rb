@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = current_user.bookings
+    @bookings = current_user.bookings.order(start_date: :asc)
   end
 
   # how to update the availability?
