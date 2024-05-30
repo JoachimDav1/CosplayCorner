@@ -11,9 +11,10 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.total_price = @booking.costume.price_per_day * amount_of_days
 
-    if @booking.save!
+    if @booking.save
       redirect_to bookings_path(current_user.bookings), notice: 'Booking was successfully registered. Have fun!'
     else
+      flash.now[:alert] = 'Your booking was not successful. Make sure the end date is after the start date!'
       render 'costumes/show', status: :unprocessable_entity
     end
   end
