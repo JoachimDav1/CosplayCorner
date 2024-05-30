@@ -1,8 +1,15 @@
-import { Controller } from "@hotwired/stimulus"
-import flatpickr from "flatpickr"; // You need to import this to use new flatpickr()
-
 export default class extends Controller {
   connect() {
-    flatpickr(this.element)
+    const bookedDates = this.getBookedDates();
+    flatpickr(this.element, {
+      minDate: "today",
+      enableTime: false,
+      dateFormat: "Y-m-d",
+      disable: bookedDates.map(date => ({ from: date.from, to: date.to }))
+    });
+  }
+  getBookedDates() {
+    const bookingForm = this.element.closest("#booking-form");
+    return JSON.parse(bookingForm.dataset.bookingsDates);
   }
 }
