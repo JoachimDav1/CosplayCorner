@@ -1,6 +1,13 @@
-<div class ="banner"> <h1>Here are all of your costumes <%= current_user.first_name %></h1></div>
+<div class="card-category-smaller" style="background-image: url('<%= asset_path("my_costumes.jpg") %>'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 300px;">
+  Here are your costumes, <%= current_user.first_name %>! 👻
+</div>
 
-<%= link_to 'add a costume', new_costume_path, class: "btn btn-secondary" %>
+<div class="container">
+  <div class="d-flex justify-content-end mt-3">
+      <%= link_to 'Add a new costume', new_costume_path, class: "btn btn-dark mt-3" %>
+  </div>
+</div>
+
  <div class = "container">
     <div class="grid-container">
 
