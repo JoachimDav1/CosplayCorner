@@ -14,7 +14,7 @@ Booking.destroy_all
 Costume.destroy_all
 User.destroy_all
 
-5.times do
+3.times do
   user = User.new(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
@@ -49,10 +49,7 @@ User.destroy_all
       "https://cdn.pixabay.com/photo/2017/09/15/18/09/ninja-2753004_1280.jpg",
       "https://cdn.pixabay.com/photo/2020/07/04/13/01/fighter-5369481_1280.jpg",
       "https://cdn.pixabay.com/photo/2016/01/13/22/54/man-1139066_1280.jpg",
-      "https://cdn.pixabay.com/photo/2015/07/26/21/23/hulk-861754_1280.jpg",
-      "https://cdn.pixabay.com/photo/2019/09/28/23/55/girl-4512047_1280.jpg",
-      "https://cdn.pixabay.com/photo/2021/01/16/18/20/woman-5923040_1280.jpg",
-      "https://cdn.pixabay.com/photo/2015/09/14/20/52/cowboy-940083_1280.jpg"
+      "https://cdn.pixabay.com/photo/2015/07/26/21/23/hulk-861754_1280.jpg"
     ]
 
     sampled_photo_urls = photo_urls.sample(3)
