@@ -1,8 +1,17 @@
-<%= link_to 'add a costume', new_costume_path, class: "btn btn-secondary" %>
-<% @costumes.each do |costume| %>
-  <p><%= costume.title %></p>
-  <p> <%= costume.description %></p></p>
-  <p><%= costume.price_per_day %>€</p>
-  <%= link_to '🗑️', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "btn" %>
-  <%= link_to 'Edit this costume', edit_costume_path(costume), class: "btn btn-secondary" %>
-<% end %>
+<div class="card-category-smaller" style="background-image: url('<%= asset_path("my_costumes.jpg") %>'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 300px;">
+  Here are your costumes, <%= current_user.first_name %>! 👻
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-end mt-3">
+      <%= link_to 'Add a new costume', new_costume_path, class: "btn btn-dark mt-3" %>
+  </div>
+
+  <% @costumes.each do |costume| %>
+    <p><%= costume.title %></p>
+    <p> <%= costume.description %></p></p>
+    <p><%= costume.price_per_day %>€</p>
+    <%= link_to 'Delete', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this beautiful costume???" }, class: "btn" %>
+    <%= link_to 'Edit', edit_costume_path(costume), class: "btn btn-secondary" %>
+  <% end %>
+</div>
