@@ -24,9 +24,11 @@
               <p> <%= costume.description %></p>
               <p><%= costume.price_per_day %>€</p>
             </div>
-             <%= link_to '🗑️', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "btn" %>
-            <%= link_to 'Edit this costume', edit_costume_path(costume), class: "btn btn-secondary" %>
+            <div class="d-flex justify-content-between">
+              <%= link_to 'Edit', edit_costume_path(costume), class: "btn btn-secondary btn-sm" %>
+              <%= link_to 'Delete', costume_path(costume.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "btn" %>
             </div>
+          </div>
         <% end %>
     </div>
   </div>

@@ -11,6 +11,6 @@
     <%= f.input :size, collection: ["Extra Small", "Small","Medium","Large", "Extra Large"] %>
     <%= f.input :category, collection: @costume_categories, prompt: 'Select Category' %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit class: "btn btn-primary mt-2"%> %>
+    <%= f.submit class: "btn btn-primary mt-2"%>
   <% end %>
 </div>
