@@ -16,16 +16,15 @@ User.destroy_all
 
 sizes = ['Small', 'Medium', 'Large', 'Extra Large']
 categories = [
-  "Animal", "Superhero", "Fantasy", "Horror", "Historical",
+  "Animal", "Superhero", "Fantasy","Historical",
   "Sci-Fi", "Pirate", "Disney", "Fairy Tale", "Zombie",
-  "Vampire", "Alien", "Steampunk", "Celebrity", "Cartoon",
-  "Clown", "Sports", "Medieval", "Victorian", "Greek Mythology",
+  "Cartoon", "Clown", "Sports", "Medieval",
   "Roman Mythology", "Ninja", "Samurai", "Military", "Western",
   "Space", "Sea Creature", "Robot", "Wizard", "Witch"
 ]
 
 
-3.times do
+7.times do
   user = User.new(
     email: Faker::Internet.email,
     password: "Brun@123",
@@ -34,14 +33,16 @@ categories = [
     phone_number: Faker::PhoneNumber.phone_number,
     address: Faker::Address.full_address
   )
-  avatar_url = "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"
-  file_avatar = URI.open(avatar_url)
-  user.photo.attach(io: file_avatar, filename: "css/ss",content_type: "image/jpeg")
+
+  number = (1..8).to_a.sample
+  avatar = File.open("app/assets/images/photo-#{number}.jpg")
+  user.photo.attach(io: avatar, filename: "css/ss",content_type: "image/jpeg")
   user.save
+
 
   puts 'one created'
 
-  3.times do
+  1.times do
     costume = user.costumes.new(
       title: Faker::Fantasy::Tolkien.character,
       description: Faker::Fantasy::Tolkien.poem,
