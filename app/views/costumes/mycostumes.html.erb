@@ -1,5 +1,4 @@
-<%= render 'form', costume: @costume %>
-
+<%= link_to 'add a costume', new_costume_path, class: "btn btn-secondary" %>
 <% @costumes.each do |costume| %>
   <p><%= costume.title %></p>
   <p> <%= costume.description %></p></p>

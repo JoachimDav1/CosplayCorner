@@ -8,11 +8,14 @@
       <% @costumes.each do |costume| %>
 
           <div class= "card">
-
-            <img src="https://www.miliashop.com/img/co/781.jpg" alt="background" style="width:90%">
-
+            <% if costume.photos.attached? %>
+              <% photo = costume.photos.sample %>
+              <%= cl_image_tag photo.key, alt: "Costume picture", style: "width:90%; height: 50%" %>
+            <% else %>
+              <%= image_tag "girl.jpg", alt: "girl picture", style: "width:90%; height: 50%" %>
+            <% end %>
             <div class="card-info">
-              <h5><%= link_to costume.title, costume_path(costume), class: "text-decoration-none mt-3" %></h5>
+              <h6 class="card-title"><%= link_to costume.title, costume_path(costume) %></h6>
               <p><%= costume.description %></p>
 
               <div class="card-details">
