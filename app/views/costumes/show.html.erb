@@ -7,13 +7,13 @@
         <div class="carousel-inner">
 
           <div class="carousel-item active">
-            <%= cl_image_tag @costume.photos[0].key, height: 450, width: 500, crop: :fill, class: "d-block w-10", style: "object-position: top;" %>
+            <%= cl_image_tag @costume.photos[0].key, height: 450, width: 500, class: "d-block w-10 img-show-carroussel" %>
           </div>
           <div class="carousel-item">
-            <%= cl_image_tag @costume.photos[1].key, height: 450, width: 500, crop: :fill, class: "d-block w-10", style: "object-position: top;" %>
+            <%= cl_image_tag @costume.photos[1].key, height: 450, width: 500, class: "d-block w-10 img-show-carroussel" %>
           </div>
           <div class="carousel-item">
-            <%= cl_image_tag @costume.photos[2].key, height: 450, width: 500, crop: :fill, class: "d-block w-10", style: "object-position: top;" %>
+            <%= cl_image_tag @costume.photos[2].key, height: 450, width: 500, class: "d-block w-10 img-show-carroussel" %>
           </div>
 
         </div>
@@ -42,7 +42,7 @@
         <div class="show-card-details">
 
           <div class="show-card-user-avatar">
-              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill %>
+              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill, class:  %>
               <p><%= @costume.user.first_name %></p>
           </div>
 
