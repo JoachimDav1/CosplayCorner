@@ -6,7 +6,7 @@
 
         <div class="carousel-inner">
 
-          <div class="carousel-item active">
+          <div class="carousel-item active" style="object-position: top">
             <%= cl_image_tag @costume.photos[0].key, height: 450, width: 500, crop: :fill, class: "d-block w-10", style: "object-position: top;" %>
           </div>
           <div class="carousel-item">
@@ -42,7 +42,7 @@
         <div class="show-card-details">
 
           <div class="show-card-user-avatar">
-              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill %>
+              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill, class:  %>
               <p><%= @costume.user.first_name %></p>
           </div>
 
