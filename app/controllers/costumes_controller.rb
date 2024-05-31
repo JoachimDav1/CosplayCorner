@@ -6,22 +6,22 @@ class CostumesController < ApplicationController
 def index
 
   @costumes = Costume.all
-  if params[:query].present?
-    dates = params[:dates].split(' to ')
-    start_date = dates.first.to_date - 1.day
-    end_date = dates.last.to_date + 1.day
-    @costumes = @costumes.where("costumes.description LIKE ?", params[:query])
-                         .or(@costumes.where("costumes.title LIKE ?", params[:query]))
-                         .or(@costumes.where("costumes.category LIKE ?", params[:query]))
-                         .distinct
-      # AND bookings.start_date <= :datepickr_start_date
-      # AND bookings.end_date >= :datepickr_end_date
+    if params[:query].present?
+      if params[:dates].present?
+        dates = params[:dates].split(' to ')
+        start_date = dates.first.to_date - 1.day
+        end_date = dates.last.to_date + 1.day
+      end
+      @costumes = Costume.search_by_title_and_description_and_category(params[:query])
+        # AND bookings.start_date <= :datepickr_start_date
+        # AND bookings.end_date >= :datepickr_end_date
+      # @costumes = @costumes.joins(:bookings).where(sql_subquery, query: "%#{params[:query]}%", datepickr_start_date: start_date, datepickr_end_date: end_date )
+      if dates.present?
+        @costumes = @costumes.joins(:bookings).where.not(bookings: {start_date: start_date..end_date} ).where.not(bookings: {end_date: start_date..end_date})
+      end
 
-    # @costumes = @costumes.joins(:bookings).where(sql_subquery, query: "%#{params[:query]}%", datepickr_start_date: start_date, datepickr_end_date: end_date )
-    if dates.present?
-      @costumes = @costumes.joins(:bookings).where.not(bookings: {start_date: start_date..end_date} ).where.not(bookings: {end_date: start_date..end_date})
     end
-  end
+
 end
 
   def show

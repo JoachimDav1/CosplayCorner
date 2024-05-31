@@ -4,7 +4,7 @@
       <div class="search container">
         <div class="row justify-content-center">
           <div class="col-sm-8 my-3">
-            <%= form_with url: root_path, method: :get, class: "d-flex bg-light rounded" do %>
+            <%= form_with url: root_path, method: :get, id: "search-form", class: "d-flex bg-light rounded" do %>
               <%= text_field_tag :query,
                     params[:query],
                     class: "form-control",
@@ -20,22 +20,25 @@
       </div>
   </div>
   <div class = "container">
-  <% unless @costumes.present? %>
-      <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
-        <span><strong>Oops!</strong> 😱 The costume you are looking for is not available at that time.</span>
-        <a data-bs-dismiss="alert" aria-label="Close">
-          <i class="fas fa-times"></i>
-        </a>
-      </div>
-  <% end %>
+
+
+    <% unless @costumes.present? %>
+        <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
+          <span><strong>Oops!</strong> 😱 The costume you are looking for is not available at that time.</span>
+          <a data-bs-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+    <% end %>
     <div class="grid-container">
       <% @costumes.each do |costume| %>
           <div class= "card">
             <div class ="card-image">
 
               <% if costume.photos.attached? %>
-                <% photo = costume.photos.sample %>
-                <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; object-fit:cover; object-position: top" %>
+                <% photo = costume.photos[0] %>
+                <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; object-fit:cover" %>
+
               <% else %>
                 <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%" %>
               <% end %>
