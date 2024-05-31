@@ -32,7 +32,7 @@
 
       <div class ="show-card-info">
 
-        <div class = "show-card-text mt-2">
+        <div class = "show-card-text mt-2 pr-4">
           <h4 class= "pb-3 pt-1"><%= @costume.title %></h4>
           <h6 class= "pb-3"><%= @costume.details %></h6>
           <h6><b>Size: </b><%= @costume.size %></h6>
@@ -42,11 +42,11 @@
         <div class="show-card-details">
 
           <div class="show-card-user-avatar">
-              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill, class:  %>
-              <p><%= @costume.user.first_name %></p>
+              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill %>
+              <p><%= @costume.user.first_name.split(" ")[0]%></p>
           </div>
 
-          <p><strong><%=@costume.price_per_day %> €</strong></p>
+          <p class="pr-6"><strong><%=@costume.price_per_day %> €</strong></p>
 
         </div>
 
