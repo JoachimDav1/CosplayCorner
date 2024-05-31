@@ -18,3 +18,5 @@ document.addEventListener('turbo:load', () => {
     });
   });
 });
+
+

@@ -16,7 +16,7 @@
       <div class="card">
         <div class="card-image">
           <% if costume.photos.attached? %>
-            <% photo = costume.photos.sample %>
+            <% photo = costume.photos[0] %>
             <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; object-fit:cover" %>
           <% else %>
             <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%" %>

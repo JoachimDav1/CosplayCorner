@@ -4,23 +4,18 @@ class CostumesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
 def index
-
-  @costumes = Costume.all
-  if params[:query].present?
+  if params[:dates].present?
     dates = params[:dates].split(' to ')
-    start_date = dates.first.to_date - 1.day
+    start_date = dates.first.to_date
     end_date = dates.last.to_date + 1.day
-    @costumes = @costumes.where("costumes.description LIKE ?", params[:query])
-                         .or(@costumes.where("costumes.title LIKE ?", params[:query]))
-                         .or(@costumes.where("costumes.category LIKE ?", params[:query]))
-                         .distinct
-      # AND bookings.start_date <= :datepickr_start_date
-      # AND bookings.end_date >= :datepickr_end_date
-
-    # @costumes = @costumes.joins(:bookings).where(sql_subquery, query: "%#{params[:query]}%", datepickr_start_date: start_date, datepickr_end_date: end_date )
-    if dates.present?
-      @costumes = @costumes.joins(:bookings).where.not(bookings: {start_date: start_date..end_date} ).where.not(bookings: {end_date: start_date..end_date})
-    end
+  end
+  if dates.present?
+    @forbidden_bookings = Booking.select(:costume_id).where(start_date: start_date..end_date).or(Booking.where(end_date: start_date..end_date))
+    @costumes = Costume.where.not(id: @forbidden_bookings)
+  end
+  @costumes ||= Costume.all
+  if params[:query].present?
+    @costumes = @costumes.search_by_title_and_description_and_category(params[:query])
   end
 end
 
@@ -32,6 +27,8 @@ end
         to: booking.end_date
       }
     end
+
+    @price_per_day = @costume.price_per_day.to_f
   end
 
   def new

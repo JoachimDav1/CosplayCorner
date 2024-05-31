@@ -19,6 +19,8 @@
   align-items: center;
   margin-top: 10px;
   height: 280px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .card img {
@@ -37,8 +39,6 @@
   align-items: flex-start;
   padding: 2px 16px;
 }
-
-
 
 .card-title a {
   text-decoration: none;
@@ -59,6 +59,7 @@
 }
 
 .card-photo {
+  object-position: top;
   object-fit: cover;
 }
 
@@ -77,11 +78,15 @@
   margin: 0;
 }
 
-
 .card-user-avatar img {
   border-radius: 50%;
   // margin-right: 5px; // Space between the image and the name
   width: 35px;
   height: 35px;
   // margin-bottom: 4px;
+}
+
+.img-show-carroussel {
+  object-position: top;
+  object-fit: cover;
 }
