@@ -1,6 +1,10 @@
-<div class="p-3 bg-light text-dark mt-4">
-  <p class="text-center">Cosplay Corner</p>
+<div class="bg-light text-dark mt-4">
   <div class="d-flex justify-content-center">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "CosplayCorner1.svg", alt: "CosplayCorner", width: 200, class: "logo" %>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center pb-3">
     <%= link_to faq_path, class: "text-dark mx-3" do %>
       <i class="fa-regular fa-circle-question"></i>
     <% end %>

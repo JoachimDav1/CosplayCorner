@@ -98,7 +98,7 @@ user1 = User.first
 costume_nice = user1.costumes.new(
   title: "Harley Quinn",
   description: "Step into the world of Gotham with a Harley Quinn costume..",
-  details: "Transform your next event into an unforgettable experience with our Harley Quinn costume rental. Whether you’re attending a costume party, a cosplay convention, or a themed event, this rental package promises a hassle-free, immersive adventure. Wearing our Harley Quinn costume, you’ll turn heads and capture the essence of Gotham’s beloved anti-heroine. Expect lots of photo opportunities, compliments, and an overall boost to your event experience.",
+  details: "By Wearing this Harley Quinn costume, you’ll turn heads and capture the essence of Gotham’s beloved anti-heroine.\n \n \n Costume only used once. It's brand new. You'll rock, girl!",
   price_per_day: "53.5",
   size: "Medium",
   category: "SuperHero"
