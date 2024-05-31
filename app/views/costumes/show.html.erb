@@ -43,7 +43,7 @@
 
           <div class="show-card-user-avatar">
               <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill %>
-              <p><%= @costume.user.first_name %></p>
+              <p><%= @costume.user.first_name%></p>
           </div>
 
           <p><strong><%=@costume.price_per_day %> €</strong></p>
