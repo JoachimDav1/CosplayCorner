@@ -50,7 +50,7 @@
 
                 <div class="card-user-avatar">
                   <%= cl_image_tag costume.user.photo.key, height: 25, width: 25, crop: :fill %>
-                  <h6 class="ml-2"><%= costume.user.first_name %></h6>
+                  <h6 class="ml-2"><%= costume.user.first_name.split(" ")[0] %></h6>
                 </div>
                 <p><strong><%= costume.price_per_day %> €</strong></p>
 

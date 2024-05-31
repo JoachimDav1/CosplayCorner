@@ -4,6 +4,7 @@
   transition: 0.3s;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   max-width: 300px;
@@ -69,6 +70,7 @@
   display: flex;
   justify-content: space-between;
   align-items:center;
+  width: 90px;
 }
 
 .card-user-avatar h6 {
