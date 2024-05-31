@@ -38,6 +38,7 @@
               <% if costume.photos.attached? %>
                 <% photo = costume.photos[0] %>
                 <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; object-fit:cover" %>
+
               <% else %>
                 <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%" %>
               <% end %>
@@ -52,7 +53,7 @@
 
                 <div class="card-user-avatar">
                   <%= cl_image_tag costume.user.photo.key, height: 25, width: 25, crop: :fill %>
-                  <h6 class="ml-2"><%= costume.user.first_name %></h6>
+                  <h6 class="ml-2"><%= costume.user.first_name.split(" ")[0] %></h6>
                 </div>
                 <p><strong><%= costume.price_per_day %> €</strong></p>
 
