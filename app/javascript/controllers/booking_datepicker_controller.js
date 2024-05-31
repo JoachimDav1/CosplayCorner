@@ -34,7 +34,7 @@ export default class extends Controller {
     const totalDays = this.getDateDiff(startDate, endDate) + 1;
     const totalPrice = totalDays * pricePerDay;
     const totalPriceElement = document.getElementById('total-price');
-    totalPriceElement.textContent = `$${totalPrice}`;
+    totalPriceElement.textContent = `${totalPrice} €`;
   }
 
   getDateDiff(startDate, endDate) {
