@@ -10,10 +10,8 @@
                     class: "form-control",
                     placeholder: "What do you want to turn into?"
                 %>
-              <%= label_tag :start_date, "", class: "form-label" %>
-              <%= text_field_tag :start_date, nil, class: "form-control", data: { controller: "datepicker", input: true }, placeholder: "From..."%>
-              <%= label_tag :end_date, "", class: "form-label" %>
-              <%= text_field_tag :end_date, nil, class: "form-control", data: { controller: "datepicker", input: true }, placeholder: "Until..." %>
+              <%= label_tag :dates, "", class: "form-label" %>
+              <%= text_field_tag :dates, nil, value: params[:dates], class: "form-control", data: { controller: "datepicker", input: true }, placeholder: "When?"%>
 
               <%= button_tag "", name: "", class: "btn btn-light" do %><i class="fa-solid fa-magnifying-glass"></i><% end %>
             <% end %>

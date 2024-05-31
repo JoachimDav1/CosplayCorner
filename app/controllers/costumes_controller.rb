@@ -4,18 +4,23 @@ class CostumesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
 def index
+
   @costumes = Costume.all
   if params[:query].present?
-    start_date = params[:start_date]
-    end_date = params[:end_date]
-    sql_subquery = <<~SQL
-      (costumes.title ILIKE :query
-      OR costumes.description ILIKE :query
-      OR costumes.category ILIKE :query)
-      AND bookings.start_date <= :datepickr
-      AND bookings.end_date >= :datepickr
-    SQL
-    @costumes = @costumes.joins(:booking).where(sql_subquery, query: "%#{params[:query]}%", datepickr: [start_date, end_date])
+    dates = params[:dates].split(' to ')
+    start_date = dates.first.to_date - 1.day
+    end_date = dates.last.to_date + 1.day
+    @costumes = @costumes.where("costumes.description LIKE ?", params[:query])
+                         .or(@costumes.where("costumes.title LIKE ?", params[:query]))
+                         .or(@costumes.where("costumes.category LIKE ?", params[:query]))
+                         .distinct
+      # AND bookings.start_date <= :datepickr_start_date
+      # AND bookings.end_date >= :datepickr_end_date
+
+    # @costumes = @costumes.joins(:bookings).where(sql_subquery, query: "%#{params[:query]}%", datepickr_start_date: start_date, datepickr_end_date: end_date )
+    if dates.present?
+      @costumes = @costumes.joins(:bookings).where.not(bookings: {start_date: start_date..end_date} ).where.not(bookings: {end_date: start_date..end_date})
+    end
   end
 end
 
