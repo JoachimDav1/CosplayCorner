@@ -21,6 +21,12 @@ end
 
   def show
     @booking = Booking.new
+    @bookings_dates = @costume.bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def new
@@ -48,11 +54,11 @@ end
   def edit
     @costume_categories = [
       "Animal", "Superhero", "Fantasy", "Horror", "Historical",
-      "Sci-Fi", "Pirate", "Disney", "Fairy Tale", "Zombie",
+      "Sci-Fi", "Fairy Tale", "Zombie",
       "Vampire", "Alien", "Steampunk", "Celebrity", "Cartoon",
-      "Clown", "Sports", "Medieval", "Victorian", "Greek Mythology",
+      "Clown", "Victorian", "Greek Mythology",
       "Roman Mythology", "Ninja", "Samurai", "Military", "Western",
-      "Space", "Sea Creature", "Robot", "Wizard", "Witch"
+      "Robot", "Wizard", "Witch"
     ]
   end
 

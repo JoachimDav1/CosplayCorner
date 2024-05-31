@@ -1,35 +1,69 @@
-<div class="d-flex flex-wrap">
-  <% @costume.photos.each do |photo| %>
-    <div class="p-2">
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    </div>
-  <% end %>
-</div>
+<div class="show-container">
 
-<div class="d-flex justify-content-around p-3">
-  <div class="container">
-    <h2><%= @costume.title %></h2>
-    <h4><%= @costume.description %></h4>
-    <h4>Costume Size</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum numquam adipisci modi blanditiis illo, magnam minima cumque earum explicabo, libero dolores ipsum? Exercitationem, dolore officia. Laborum, autem! Aperiam, ex alias?</p>
-    <h4>Costume Description</h4>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, mollitia quas velit magnam qui repellat beatae molestias quam blanditiis nam recusandae praesentium maxime, minima molestiae, nostrum iusto modi? Saepe, fuga?</p>
-    <p><%= @costume.user %></p>
-  </div>
+    <div class = "show-card">
+
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <%= cl_image_tag @costume.photos[0].key, height: 450, width: 800, crop: :fill, class: "d-block w-10" %>
+          </div>
+          <div class="carousel-item">
+            <%= cl_image_tag @costume.photos[1].key, height: 450, width: 800, crop: :fill, class: "d-block w-10" %>
+          </div>
+          <div class="carousel-item">
+            <%= cl_image_tag @costume.photos[2].key, height: 450, width: 800, crop: :fill, class: "d-block w-10" %>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+      </div>
+
+      <div class ="show-card-info">
+
+        <h3><%= @costume.title %></h3>
+        <h6><%= @costume.description %></h6>
+        <h5>Costume Size: <%= @costume.size %></h6>
+        <h5>Costume Category: <%= @costume.category %></h6>
+
+        <div class="show-card-details">
+
+          <div class="show-card-user-avatar">
+              <%= cl_image_tag @costume.user.photo.key, height: 25, width: 25, crop: :fill %>
+              <p><%= @costume.user.first_name %> <%= @costume.user.last_name %></p>
+          </div>
+
+          <p><strong><%=@costume.price_per_day %> €</strong></p>
+
+        </div>
+
+      </div>
+
+    </div>
 
   <div>
-    <div id="booking-form" class="p-3">
-      <h1>Book your costume</h1>
-      <h3><%= @costume.title %></h3>
+
+ <div id="booking-form" class="p-3" data-bookings-dates="<%= @bookings_dates.to_json %>">
+        <h1>Book your costume</h1>
+        <h3><%= @costume.title %></h3>
       <%= simple_form_for [@costume, @booking] do |f| %>
-        <%= f.input :start_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-        <%= f.input :end_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } }  %>
-        <%= f.submit "Confirm your Booking", class: "btn btn-primary" %>
+          <%= f.input :start_date, as: :string, input_html: { id: "start_date", data: { controller: "datepicker" } } %>
+          <%= f.input :end_date, as: :string, input_html: { id: "end_date", data: { controller: "datepicker" } } %>
+          <%= f.button :submit, "Book this costume !", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
+
+
 </div>

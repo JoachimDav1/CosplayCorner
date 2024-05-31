@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container w-50">
   <% if @costume.valid? %>
     <h3>Update your costume</h3>
     <% else  %>
@@ -8,7 +8,7 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :price_per_day %>
-    <%= f.input :size, collection: ["Extra Small", "Small","Medium","Large", "Extra Large"] %>
+    <%= f.input :size, collection: ["Extra small", "Small","Medium","Large", "Extra Large"] %>
     <%= f.input :category, collection: @costume_categories, prompt: 'Select Category' %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit class: "btn btn-primary mt-2"%>
