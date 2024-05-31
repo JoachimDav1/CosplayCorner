@@ -3,13 +3,16 @@
       <H1>Turn heads, crack up crowds</H1>
       <div class="search container">
         <div class="row justify-content-center">
-          <div class="col-sm-6 my-3">
-            <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+          <div class="col-sm-8 my-3">
+            <%= form_with url: root_path, method: :get, class: "d-flex bg-light rounded" do %>
               <%= text_field_tag :query,
                     params[:query],
                     class: "form-control",
                     placeholder: "What do you want to turn into?"
                 %>
+              <%= label_tag :dates, "", class: "form-label" %>
+              <%= text_field_tag :dates, nil, value: params[:dates], class: "form-control", data: { controller: "datepicker", input: true }, placeholder: "When?"%>
+
               <%= button_tag "", name: "", class: "btn btn-light" do %><i class="fa-solid fa-magnifying-glass"></i><% end %>
             <% end %>
           </div>
