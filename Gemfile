@@ -79,3 +79,7 @@ end
 gem "devise"
 gem "faker"
 gem "open-uri"
+
+# Use PG Search
+
+gem "pg_search"
