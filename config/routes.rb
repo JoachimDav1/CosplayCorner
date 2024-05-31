@@ -9,4 +9,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   resources :bookings, only: [:index]
+
+  get '/faq', to: 'pages#faq'
+  get '/contact', to: 'pages#contact'
 end

@@ -1,11 +1,11 @@
 <div class="p-3 bg-light text-dark mt-4">
   <p class="text-center">Cosplay Corner</p>
   <div class="d-flex justify-content-center">
-    <a href="https://www.linkedin.com/in/brunacaricio/" class="text-dark mx-3" target="_blank">
+    <%= link_to faq_path, class: "text-dark mx-3" do %>
       <i class="fa-regular fa-circle-question"></i>
-    </a>
-    <a href="https://github.com/brunacaricio" class="text-dark mx-3" target="_blank">
+    <% end %>
+    <%= link_to contact_path, class: "text-dark mx-3" do %>
       <i class="fa-solid fa-envelope"></i>
-    </a>
+    <% end %>
   </div>
 </div>
