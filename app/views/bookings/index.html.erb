@@ -10,6 +10,14 @@
   <hr>
 </div>
 
+<% if @booking.present? %>
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+      Your new booking was successfully registered. Have fun!
+    </div>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="grid-container">
     <% @bookings.each do |booking| %>

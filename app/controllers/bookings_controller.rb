@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.total_price = @booking.costume.price_per_day * amount_of_days
 
     if @booking.save!
-      redirect_to bookings_path(current_user.bookings), notice: 'Booking was successfully registered. Have fun!'
+      redirect_to bookings_path(booking_id: @booking.id)
     else
       flash.now[:alert] = 'Your booking was not successful. Make sure the end date is after the start date!'
       render 'costumes/show', status: :unprocessable_entity
@@ -21,9 +21,8 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings.order(start_date: :asc)
+    @booking = @bookings.detect { |booking| booking.id == params[:booking_id].to_i }
   end
-
-
 
   private
 
