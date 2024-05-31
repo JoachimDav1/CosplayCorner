@@ -25,20 +25,6 @@ categories = [
 
 
 7.times do
-  user = User.new(
-    email: Faker::Internet.email,
-    password: "Brun@123",
-    first_name: Faker::FunnyName.name,
-    last_name: Faker::Name.last_name,
-    phone_number: Faker::PhoneNumber.phone_number,
-    address: Faker::Address.full_address
-  )
-
-  number = (1..8).to_a.sample
-  avatar = File.open("app/assets/images/photo-#{number}.jpg")
-  user.photo.attach(io: avatar, filename: "css/ss",content_type: "image/jpeg")
-  user.save
-
 
   puts 'one created'
 
@@ -111,3 +97,133 @@ bruna.save!
 end
 
 puts "Done :)"
+
+
+
+puts 'creation of users'
+user1 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar1 = File.open("app/assets/images/photo-1.jpg")
+user1.photo.attach(io: avatar1, filename: "photo-1.jpg", content_type: "image/jpeg")
+user1.save
+
+
+user2 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar2 = File.open("app/assets/images/photo-2.jpg")
+user2.photo.attach(io: avatar2, filename: "photo-2.jpg", content_type: "image/jpeg")
+user2.save
+
+
+user3 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar3 = File.open("app/assets/images/photo-3.jpg")
+user3.photo.attach(io: avatar3, filename: "photo-3.jpg", content_type: "image/jpeg")
+user3.save
+
+
+user4 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar4 = File.open("app/assets/images/photo-4.jpg")
+user4.photo.attach(io: avatar4, filename: "photo-4.jpg", content_type: "image/jpeg")
+user4.save
+
+
+user5 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar5 = File.open("app/assets/images/photo-5.jpg")
+user5.photo.attach(io: avatar5, filename: "photo-5.jpg", content_type: "image/jpeg")
+user5.save
+
+
+user6 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar6 = File.open("app/assets/images/photo-6.jpg")
+user6.photo.attach(io: avatar6, filename: "photo-6.jpg", content_type: "image/jpeg")
+user6.save
+
+
+user7 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar7 = File.open("app/assets/images/photo-7.jpg")
+user7.photo.attach(io: avatar7, filename: "photo-7.jpg", content_type: "image/jpeg")
+user7.save
+
+
+user8 = User.new(
+  email: Faker::Internet.email,
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+avatar8 = File.open("app/assets/images/photo-8.jpg")
+user8.photo.attach(io: avatar8, filename: "photo-8.jpg", content_type: "image/jpeg")
+user8.save
+
+
+bruna = User.new(
+  email: "bru@gmail.com",
+  password: "Brun@123",
+  first_name: Faker::FunnyName.name,
+  last_name: Faker::Name.last_name,
+  phone_number: Faker::PhoneNumber.phone_number,
+  address: Faker::Address.full_address
+)
+
+file_avatar = File.open("app/assets/images/photo-1.jpg")
+bruna.photo.attach(io: file_avatar, filename: "css/ss",content_type: "image/jpeg")
+bruna.save!
+
+puts 'creation of users finished'
+
+puts "creation of costumes"
+
+
+puts "nice costume for presentation"
+
+costume_nice = Costume.new(
+)
