@@ -21,3 +21,18 @@
   background-repeat: no-repeat;
   height: 300px;
 }
+
+.search {
+  margin-top: 5rem;
+}
+
+.datepicker-container {
+  flex-grow: 1;
+  margin: 0 1rem;
+  width: 100%;
+}
+
+// @media (max-width: 767.98px) {
+//   .datepicker-container {
+//     margin: 0 ;
+//   }
