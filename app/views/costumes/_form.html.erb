@@ -1,9 +1,3 @@
-<div class="container w-50">
-  <% if @costume.valid? %>
-    <h3>Update your costume</h3>
-    <% else  %>
-    <h3>Upload a new costume</h3>
-  <% end %>
   <%= simple_form_for(@costume) do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
@@ -13,4 +7,3 @@
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit class: "btn btn-primary mt-2"%>
   <% end %>
-</div>
