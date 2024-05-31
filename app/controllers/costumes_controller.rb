@@ -3,19 +3,26 @@ class CostumesController < ApplicationController
   before_action :find_costume, only: %i[update destroy show edit]
   skip_before_action :authenticate_user!, only: :index
 
-  def index
-    @costumes = Costume.all
-    if params[:query].present?
-      sql_subquery = <<~SQL
-        costumes.title ILIKE :query
-        OR costumes.description ILIKE :query
-        OR costumes.category ILIKE :query
-        OR users.first_name ILIKE :query
-        OR users.last_name ILIKE :query
-      SQL
-      @costumes = @costumes.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
+def index
+
+  @costumes = Costume.all
+  if params[:query].present?
+    dates = params[:dates].split(' to ')
+    start_date = dates.first.to_date - 1.day
+    end_date = dates.last.to_date + 1.day
+    @costumes = @costumes.where("costumes.description LIKE ?", params[:query])
+                         .or(@costumes.where("costumes.title LIKE ?", params[:query]))
+                         .or(@costumes.where("costumes.category LIKE ?", params[:query]))
+                         .distinct
+      # AND bookings.start_date <= :datepickr_start_date
+      # AND bookings.end_date >= :datepickr_end_date
+
+    # @costumes = @costumes.joins(:bookings).where(sql_subquery, query: "%#{params[:query]}%", datepickr_start_date: start_date, datepickr_end_date: end_date )
+    if dates.present?
+      @costumes = @costumes.joins(:bookings).where.not(bookings: {start_date: start_date..end_date} ).where.not(bookings: {end_date: start_date..end_date})
     end
   end
+end
 
   def show
     @booking = Booking.new
@@ -88,6 +95,6 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:title, :description, :price_per_day,:size, :category ,photos: [])
+    params.require(:costume).permit(:title, :description, :price_per_day, :size, :category, photos: [])
   end
 end
