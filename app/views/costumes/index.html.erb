@@ -4,16 +4,17 @@
       <div class="search container">
         <div class="row justify-content-center">
           <div class="col-sm-8 my-3">
-            <%= form_with url: root_path, method: :get, class: "d-flex bg-light" do %>
+            <%= form_with url: root_path, method: :get, class: "d-flex bg-light rounded" do %>
               <%= text_field_tag :query,
                     params[:query],
                     class: "form-control",
                     placeholder: "What do you want to turn into?"
                 %>
-              <%= label_tag :start_date, "Start Date:", class: "form-label" %>
-              <%= text_field_tag :start_date, nil, class: "form-control", data: { controller: "datepicker", input: true } %>
-              <%= label_tag :end_date, "End Date:", class: "form-label" %>
-              <%= text_field_tag :end_date, nil, class: "form-control", data: { controller: "datepicker", input: true } %>
+              <%= label_tag :start_date, "", class: "form-label" %>
+              <%= text_field_tag :start_date, nil, class: "form-control", data: { controller: "datepicker", input: true }, placeholder: "From..."%>
+              <%= label_tag :end_date, "", class: "form-label" %>
+              <%= text_field_tag :end_date, nil, class: "form-control", data: { controller: "datepicker", input: true }, placeholder: "Until..." %>
+
               <%= button_tag "", name: "", class: "btn btn-light" do %><i class="fa-solid fa-magnifying-glass"></i><% end %>
             <% end %>
           </div>

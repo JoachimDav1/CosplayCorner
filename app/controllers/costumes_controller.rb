@@ -3,19 +3,21 @@ class CostumesController < ApplicationController
   before_action :find_costume, only: %i[update destroy show edit]
   skip_before_action :authenticate_user!, only: :index
 
-  def index
-    @costumes = Costume.all
-    if params[:query].present?
-      sql_subquery = <<~SQL
-        costumes.title ILIKE :query
-        OR costumes.description ILIKE :query
-        OR costumes.category ILIKE :query
-        OR users.first_name ILIKE :query
-        OR users.last_name ILIKE :query
-      SQL
-      @costumes = @costumes.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
-    end
+def index
+  @costumes = Costume.all
+  if params[:query].present?
+    start_date = params[:start_date]
+    end_date = params[:end_date]
+    sql_subquery = <<~SQL
+      (costumes.title ILIKE :query
+      OR costumes.description ILIKE :query
+      OR costumes.category ILIKE :query)
+      AND bookings.start_date <= :datepickr
+      AND bookings.end_date >= :datepickr
+    SQL
+    @costumes = @costumes.joins(:booking).where(sql_subquery, query: "%#{params[:query]}%", datepickr: [start_date, end_date])
   end
+end
 
   def show
     @booking = Booking.new
@@ -82,6 +84,6 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:title, :description, :price_per_day,:size, :category ,photos: [])
+    params.require(:costume).permit(:title, :description, :price_per_day, :size, :category, photos: [])
   end
 end
