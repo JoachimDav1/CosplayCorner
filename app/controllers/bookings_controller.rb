@@ -38,8 +38,8 @@ class BookingsController < ApplicationController
   end
 
   def amount_of_days
-    start_date = @booking.start_date
-    end_date = @booking.end_date
+    start_date = @booking.start_date.to_date
+    end_date = @booking.end_date.to_date
 
     diff_date = (end_date - start_date).to_i
     diff_date.zero? ? 1 : diff_date
