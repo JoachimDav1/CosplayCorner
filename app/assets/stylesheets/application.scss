@@ -68,6 +68,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   width: 235px;
+  margin-right: 6px;
 }
 
 .show-card-user-avatar {
@@ -76,13 +77,17 @@ body {
   justify-content: space-between;
 
 }
+.show-card-user-avatar img {
+  border-radius: 50%;
+  margin-right: 5px;
+}
 
 .show-card-info {
   margin-top: 6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 10px;
+  padding-left: 6px;
   padding-right: 10px;
   width: 100%;
   min-height: 444px;
@@ -90,4 +95,9 @@ body {
 
 .Show-card-text {
   gap: 10px;
+}
+
+.carousel-inner {
+  object-position: top;
+  
 }
