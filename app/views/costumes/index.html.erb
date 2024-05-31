@@ -28,11 +28,10 @@
               <% else %>
                 <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%" %>
               <% end %>
-
             </div>
 
-            <div class="card-info">
-
+            <div class="card-info mb-3">
+            
               <h6 class="card-title"><%= link_to costume.title, costume_path(costume) %></h6>
               <p><%= costume.description %></p>
 
@@ -40,7 +39,7 @@
 
                 <div class="card-user-avatar">
                   <%= cl_image_tag costume.user.photo.key, height: 25, width: 25, crop: :fill %>
-                  <h6><%= costume.user.first_name %></h6>
+                  <h6 class="ml-2"><%= costume.user.first_name %></h6>
                 </div>
                 <p><strong><%= costume.price_per_day %> €</strong></p>
 

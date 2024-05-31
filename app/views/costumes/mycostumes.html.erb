@@ -4,9 +4,10 @@
 
 <div class="container">
   <div class="d-flex justify-content-between">
-      <h4 class="mt-4"><strong>Your beautiful costumes</strong></h4>
+      <h4 class="mt-4"><strong>My beautiful costumes (<%= @costumes.count %>)</strong></h4>
       <%= link_to 'Add a new costume', new_costume_path, class: "btn btn-dark mt-4 rounded" %>
   </div>
+  <hr>
 </div>
 
 <div class="container">
@@ -26,7 +27,7 @@
           <p><strong>Description: </strong><%= costume.description %></p>
           <p><strong>Price: </strong><%= costume.price_per_day %>€</p>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end p-1 w-100">
           <%= link_to edit_costume_path(costume), class: "ml-4 p-2 text-dark" do %>
             <i class="fa-solid fa-pencil"></i>
           <% end %>

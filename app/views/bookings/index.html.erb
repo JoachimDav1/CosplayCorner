@@ -1,24 +1,37 @@
-<div class="banner">
-  <H1>All of your bookings...</H1>
+<div class="card-category-smaller custom-banner" style="background-image: url('<%= asset_path("party.jpg") %>')">
+  All of your bookings, <%= current_user.first_name %>!
 </div>
+
 <div class="container">
-<h2 class="mt-3"> My Bookings</h2>
+  <div class="d-flex justify-content-between">
+      <h4 class="mt-4"><strong>Booking history (<%= @bookings.count %>) </strong></h4>
+      <%= link_to 'Book a new costume', costumes_path, class: "btn btn-dark mt-4 rounded" %>
+  </div>
+  <hr>
+</div>
+
+<div class="container">
   <div class="grid-container">
     <% @bookings.each do |booking| %>
-    <div class= "card">
-      <% if booking.costume.photos.attached? %>
-          <% photo = booking.costume.photos.sample %>
-          <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; height: 50%" %>
-      <% else %>
-            <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%; height: 50%" %>
-      <% end %>
-      <h6 class="card-title"><%= booking.costume.title %></h6>
-      <div class="card-info">
-        <p> <b>From: </b> <%= booking.start_date.strftime("%B %d, %Y") %></p>
-        <p> <b>Until: </b> <%= booking.end_date.strftime("%B %d, %Y") %></p>
-        <p><%= booking.total_price %> €</p>
+      <div class= "card">
+        <div class ="card-image">
+          <% if booking.costume.photos.attached? %>
+              <% photo = booking.costume.photos.sample %>
+              <%= cl_image_tag photo.key, alt: "Costume picture", class: "card-photo", style: "width:90%; object-fit:cover" %>
+          <% else %>
+                <%= image_tag "girl.jpg", alt: "girl picture", class: "card-photo", style: "width:90%; object-fit:cover" %>
+          <% end %>
+        </div>
+
+        <div class="card-info">
+          <h5 class="card-title"><%= link_to booking.costume.title, costume_path(booking.costume) %></h5>
+          <div>
+            <p> <b>From: </b> <%= booking.start_date.strftime("%B %d, %Y") %></p>
+            <p> <b>Until: </b> <%= booking.end_date.strftime("%B %d, %Y") %></p>
+            <p><%= booking.total_price %> €</p>
+          </div>
+        </div>
       </div>
-     </div>
     <% end %>
   </div>
 </div>
