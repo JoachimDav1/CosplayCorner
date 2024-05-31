@@ -60,12 +60,9 @@
         <h3>Book this costume</h3>
         <h6 class="mt-3">Total price:</h6>
       <%= simple_form_for [@costume, @booking] do |f| %>
-          <%= f.input :start_date, as: :string, input_html: { id: "start_date", data: { controller: "datepicker" } } %>
-          <%= f.input :end_date, as: :string, input_html: { id: "end_date", data: { controller: "datepicker" } } %>
-          <%= f.button :submit, "Book this costume!", class: "btn btn-primary" %>
+          <%= f.input :start_date, as: :string, input_html: { id: "start_date", data: { controller: "booking-datepicker" },class: "d-none" }, label: "Pick your dates.." %>
+          <%= f.button :submit, "Book this costume !", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
-
-
 </div>
