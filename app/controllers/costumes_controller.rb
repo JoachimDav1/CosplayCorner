@@ -32,6 +32,8 @@ end
         to: booking.end_date
       }
     end
+
+    @price_per_day = @costume.price_per_day.to_f
   end
 
   def new
